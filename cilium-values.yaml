@@ -1,7 +1,12 @@
 # for reference check: https://docs.cilium.io/en/stable/helm-reference/
 
-# envoyConfig:
+envoyConfig:
+  enabled: true
+
+# enable for debugging
+# debug:
 #   enabled: true
+#   verbose: flow
 
 ingressController:
   default: true
@@ -26,3 +31,6 @@ l2announcements:
 
 operator:
   replicas: 1
+
+# test
+# apiRateLimit: endpoint-create=rate-limit:2/s,rate-burst:4

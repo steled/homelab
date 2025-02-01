@@ -36,9 +36,9 @@ k1-apply-test:
 	$(eval ENVIRONMENT="kubeone-test")
 	make k1-apply
 
-k1-apply-prod:
+k1-apply-homelab:
 	$(eval COLOR=${RED})
-	$(eval ENVIRONMENT="homeserver")
+	$(eval ENVIRONMENT="homelab")
 	make k1-apply
 
 k1-reset-test:
@@ -46,9 +46,9 @@ k1-reset-test:
 	$(eval ENVIRONMENT="kubeone-test")
 	make k1-reset
 
-k1-reset-prod:
+k1-reset-homelab:
 	$(eval COLOR=${RED})
-	$(eval ENVIRONMENT="homeserver")
+	$(eval ENVIRONMENT="homelab")
 	make k1-reset
 
 warning:
