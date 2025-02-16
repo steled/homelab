@@ -1,1 +1,3 @@
+# ignore kubeone binary and all version backups
 kubeone
+kubeone_*
