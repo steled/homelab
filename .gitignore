@@ -1,3 +1,6 @@
 # ignore kubeone binary and all version backups
 kubeone
 kubeone_*
+
+# ignore tar archives
+*.tar.gz
