@@ -30,7 +30,7 @@ l2announcements:
 #     backend: envoy
 
 operator:
-  replicas: 1
+  replicas: 2
 
 # test
 # apiRateLimit: endpoint-create=rate-limit:2/s,rate-burst:4
