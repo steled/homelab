@@ -60,7 +60,8 @@ spec:
         - -c
         - |
           kubectl delete -f https://raw.githubusercontent.com/kubermatic/kubeone/refs/heads/main/addons/unattended-upgrades/fluo.yaml
-          kubectl delete serviceaccount,clusterrole -l app=fluo-cleanup -n kube-system
+          kubectl delete serviceaccount -l app=fluo-cleanup -n kube-system
+          kubectl delete clusterrole -l app=fluo-cleanup
           exit 0
         image: bitnami/kubectl
         imagePullPolicy: IfNotPresent
