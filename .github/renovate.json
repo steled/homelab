@@ -4,7 +4,9 @@
     "main"
   ],
   "dependencyDashboard": true,
-  "labels": ["dependencies"],
+  "labels": [
+    "dependencies"
+  ],
   "enabledManagers": [
     "custom.regex",
     "github-actions"
@@ -12,12 +14,12 @@
   "customManagers": [
     {
       "customType": "regex",
-      "fileMatch": [
-        "(^|/)Makefile$",
-        "(^|/)makefile$",
-        "(^|/)GNUMakefile$",
-        "\\.mk$",
-        "(^|/)homelab\\.yaml$"
+      "managerFilePatterns": [
+        "/(^|/)Makefile$/",
+        "/(^|/)makefile$/",
+        "/(^|/)GNUMakefile$/",
+        "/\\.mk$/",
+        "/(^|/)homelab\\.yaml$/"
       ],
       "matchStrings": [
         "# renovate: datasource=(?<datasource>[a-z-.]+?) depName=(?<depName>[^\\s]+?)(?: (?:packageName)=(?<packageName>[^\\s]+?))?(?: versioning=(?<versioning>[^\\s]+?))?(?: extractVersion=(?<extractVersion>[^\\s]+?))?(?: registryUrl=(?<registryUrl>[^\\s]+?))?\\s+[A-Za-z0-9_]+?_VERSION\\s*:*\\??=\\s*[\"']?(?<currentValue>.+?)[\"']?\\s",
@@ -26,24 +28,36 @@
     }
   ],
   "github-actions": {
-    "fileMatch": [
-      "(^|/)(workflow-templates|\\.(?:github|gitea|forgejo)/(?:workflows|actions))/.+\\.ya?ml$",
-      "(^|/)action\\.ya?ml$"
+    "managerFilePatterns": [
+      "/(^|/)(workflow-templates|\\.(?:github|gitea|forgejo)/(?:workflows|actions))/.+\\.ya?ml$/",
+      "/(^|/)action\\.ya?ml$/"
     ]
   },
   "packageRules": [
     {
-      "matchManagers": ["custom.regex", "github-actions"],
+      "matchManagers": [
+        "custom.regex",
+        "github-actions"
+      ],
       "separateMinorPatch": true
     },
     {
-      "matchManagers": ["custom.regex", "github-actions"],
-      "matchUpdateTypes": ["patch"],
+      "matchManagers": [
+        "custom.regex",
+        "github-actions"
+      ],
+      "matchUpdateTypes": [
+        "patch"
+      ],
       "automerge": true
     },
     {
-      "matchDatasources": ["github-releases"],
-      "matchPackageNames": ["kubereboot/charts"],
+      "matchDatasources": [
+        "github-releases"
+      ],
+      "matchPackageNames": [
+        "kubereboot/charts"
+      ],
       "extractVersion": "^kured-(?<version>.*)$"
     }
   ]
