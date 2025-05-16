@@ -46,6 +46,11 @@ addons:
   enable: true
   path: "./addons"
   addons:
+    - name: backups-restic
+      params:
+        resticPassword: "m0VX36XVAbq1Rt6HJHXVSOJyjnaL"
+        s3Bucket: "s3:s3.steled.org/kubeone-backup"
+        awsDefaultRegion: "eu-east-local"
     - name: unattended-upgrades
 
 helmReleases:
