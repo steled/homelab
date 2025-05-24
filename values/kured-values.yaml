@@ -11,7 +11,7 @@ configuration:
   prometheusUrl: "http://vmsingle-victoria-metrics-k8s-stack.victoriametrics.svc.cluster.local:8429"
   alertFiringOnly: true
   alertFilterRegexp: ^(RebootRequired|Watchdog)$
-  notifyUrl: "<REDACTED>"
+  notifyUrl: "generic://apprise.apprise.svc:80/notify/19cc5a4506f4bb050e8f5807263a1626ae0b04033a0b32495a3e61b29895e4f8?template=json&disabletls=yes&messagekey=body"
   # period: "2m" # only for testing purpose
 
 metrics:
