@@ -1,0 +1,4 @@
+#pattern filter=crypt diff=crypt merge=crypt
+credentials.yaml filter=crypt diff=crypt merge=crypt
+homelab-kubeconfig filter=crypt diff=crypt merge=crypt
+kubeone-homelab-kubeconfig filter=crypt diff=crypt merge=crypt
