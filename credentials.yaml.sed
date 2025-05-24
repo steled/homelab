@@ -1,0 +1,2 @@
+s/\(AWS_ACCESS_KEY_ID: "\).*/\1<REDACTED>"/
+s/\(AWS_SECRET_ACCESS_KEY: "\).*/\1<REDACTED>"/
