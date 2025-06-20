@@ -101,11 +101,8 @@ export BIN_OS ?=linux
 export BIN_ARCH ?=amd64
 download-kubeone-release:
 	@$(eval KUBEONE_OLD=$(shell $(KUBEONE_BINARY) version | jq -r .kubeone.gitVersion))
-	@test ${KUBEONE_OLD} = $(shell $(KUBEONE_BINARY) version | jq -r .kubeone.gitVersion) && echo "OK: kubeone version still up to date" || echo "\033[41;101mERROR:\033[0m kubeone binary not up to date, downloading new version"
-	@test -f $(KUBEONE_BINARY) && cp $(KUBEONE_BINARY) $(KUBEONE_BINARY)_${KUBEONE_OLD} || (echo "\033[41;101mERROR:\033[0m kubeone binary not found, downloading now")
-	# @cp $(KUBEONE_BINARY) $(KUBEONE_BINARY)_${KUBEONE_OLD} || exit 0
+	@test ${KUBEONE_OLD} = $(KUBEONE_VERSION) && echo "\033[41;42mOK:\033[0m kubeone version still up to date" || echo -e "\033[41;101mERROR:\033[0m kubeone binary not up to date, downloading new version"
+	@test -f $(KUBEONE_BINARY) && cp $(KUBEONE_BINARY) $(KUBEONE_BINARY)_${KUBEONE_OLD} || echo -e "\033[41;101mERROR:\033[0m kubeone binary not found, downloading now"
 	@wget https://github.com/kubermatic/kubeone/releases/download/v${KUBEONE_VERSION}/kubeone_$(KUBEONE_VERSION)_${BIN_OS}_${BIN_ARCH}.zip -O kubeone_$(KUBEONE_VERSION)_${BIN_OS}_${BIN_ARCH}.zip
 	@unzip -o kubeone_$(KUBEONE_VERSION)_${BIN_OS}_${BIN_ARCH}.zip 'kubeone' -d ${ROOT_DIR}/
-	# @unzip -oj kubeone_$(KUBEONE_VERSION)_${BIN_OS}_${BIN_ARCH}.zip 'addons/default-storage-class/*' -d addons/default-storage-class_v$(KUBEONE_VERSION)
-	# @unzip -oj kubeone_$(KUBEONE_VERSION)_${BIN_OS}_${BIN_ARCH}.zip 'addons/unattended-upgrades/*' -d addons/unattended-upgrades_v$(KUBEONE_VERSION)
 	@rm kubeone_$(KUBEONE_VERSION)_${BIN_OS}_${BIN_ARCH}.zip
