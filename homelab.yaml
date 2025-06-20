@@ -4,7 +4,7 @@ name: homelab
 
 versions:
   # renovate: datasource=github-releases depName=kubernetes packageName=kubernetes/kubernetes
-  kubernetes: '1.32.5' # check version here: https://kubernetes.io/releases/
+  kubernetes: '1.32.6' # check version here: https://kubernetes.io/releases/
 
 cloudProvider:
   none: {}
