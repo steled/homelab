@@ -84,7 +84,6 @@ k1-apply: warning
 	@cd ${K1_CONFIG} && \
 		$(KUBEONE_BINARY) ${K1_CRED_FLAG} apply $(arg) -c credentials.yaml -m $(ENVIRONMENT).yaml --verbose ${K1_EXTRA_ARG}
 	make k1-kubeconfig
-	# make k1-apply-md
 
 k1-reset: warning
 	@cd ${K1_CONFIG} && \
