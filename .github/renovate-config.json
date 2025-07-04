@@ -2,7 +2,7 @@
   "assigneesFromCodeOwners": true,
   "branchConcurrentLimit": 3,
   "branchPrefix": "renovate/",
-  "gitAuthor": "steled <34886888+steled@users.noreply.github.com>",
+  "gitAuthor": "cheeky-badger-bot <219245588+cheeky-badger-bot@users.noreply.github.com>",
   "onboarding": false,
   "platform": "github",
   "prConcurrentLimit": 10,
@@ -10,5 +10,5 @@
   "repositories": [
     "steled/homelab"
   ],
-  "username": "steled"
+  "username": "cheeky-badger-bot"
 }
