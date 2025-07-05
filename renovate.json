@@ -4,7 +4,8 @@
     "github>steled/renovate-config"
   ],
   "enabledManagers": [
-    "custom.regex"
+    "custom.regex",
+    "github-actions"
   ],
   "customManagers": [
     {
