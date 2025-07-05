@@ -1,15 +1,10 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "baseBranches": [
-    "main"
-  ],
-  "dependencyDashboard": true,
-  "labels": [
-    "dependencies"
+  "extends": [
+    "github>steled/renovate-config"
   ],
   "enabledManagers": [
-    "custom.regex",
-    "github-actions"
+    "custom.regex"
   ],
   "customManagers": [
     {
@@ -27,24 +22,16 @@
       ]
     }
   ],
-  "github-actions": {
-    "managerFilePatterns": [
-      "/(^|/)(workflow-templates|\\.(?:github|gitea|forgejo)/(?:workflows|actions))/.+\\.ya?ml$/",
-      "/(^|/)action\\.ya?ml$/"
-    ]
-  },
   "packageRules": [
     {
       "matchManagers": [
-        "custom.regex",
-        "github-actions"
+        "custom.regex"
       ],
       "separateMinorPatch": true
     },
     {
       "matchManagers": [
-        "custom.regex",
-        "github-actions"
+        "custom.regex"
       ],
       "matchUpdateTypes": [
         "patch"
