@@ -1,0 +1,5 @@
+{
+  "extends": [
+    "github>steled/renovate-config"
+  ]
+}
