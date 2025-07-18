@@ -11,9 +11,9 @@ ENVIRONMENT?=test
 # K1_SSH_KEY="${ROOT_DIR}/../secrets/kone-key-ecdsa"
 # K1_CRED_FILE="./secrets/credentials.kubermatic.yml"
 # K1_CRED_FLAG=-c ${K1_CRED_FILE}
-K1_KUBECONFIG="${ROOT_DIR}/kubeone-${ENVIRONMENT}-kubeconfig"
+K1_KUBECONFIG="${ROOT_DIR}/${ENVIRONMENT}-kubeconfig"
 K1_EXTRA_ARG?=""
-#K1_EXTRA_ARG?="--force-upgrade"
+# K1_EXTRA_ARG?="--force-upgrade"
 # TODO: check version here: https://docs.kubermatic.com/kubeone/main/architecture/compatibility/supported-versions/
 # KUBEONE_BINARY="kubeone"
 KUBEONE_BINARY="${ROOT_DIR}/kubeone"
