@@ -1,6 +1,5 @@
 {
   "assigneesFromCodeOwners": true,
-  "branchConcurrentLimit": 3,
   "branchPrefix": "renovate/",
   "gitAuthor": "cheeky-badger-bot <219245588+cheeky-badger-bot@users.noreply.github.com>",
   "onboarding": false,
