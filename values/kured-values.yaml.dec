@@ -11,7 +11,7 @@ configuration:
   prometheusUrl: "http://vmsingle-victoria-metrics-k8s-stack.victoriametrics.svc.cluster.local:8429"
   alertFiringOnly: true
   alertFilterRegexp: ^(RebootRequired|Watchdog)$
-  notifyUrl: "<REDACTED>"
+  # notifyUrl: "<REDACTED>"
   # period: "2m" # only for testing purpose
 
 metrics:
