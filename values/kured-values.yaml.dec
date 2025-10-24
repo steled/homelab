@@ -8,7 +8,7 @@ configuration:
   startTime: "2am"
   endTime: "4am"
   timeZone: "Europe/Berlin"
-  prometheusUrl: "http://vmsingle-victoria-metrics-k8s-stack.victoriametrics.svc.cluster.local:8429"
+  prometheusUrl: "http://vmagent-victoria-metrics-k8s-stack.victoriametrics.svc.cluster.local:8429"
   alertFiringOnly: true
   alertFilterRegexp: ^(RebootRequired|Watchdog)$
   # notifyUrl: "<REDACTED>"
