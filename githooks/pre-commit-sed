@@ -1,32 +1,66 @@
 #!/usr/bin/env bash
-# sed pre-commit hook: duplicate decrypted sensitive file and redact sensitive informations via sed
+# Pre-commit Hook: Duplicate decrypted sensitive files and redact sensitive information using sed.
 
-tmp=$(mktemp)
-IFS=$'\n'
-for secret_file in $(git -c core.quotePath=false ls-files | git -c core.quotePath=false check-attr --stdin filter | awk 'BEGIN { FS = ":" }; /crypt$/{ print $1 }'); do
-  # Skip symlinks, they contain the linked target file path not plaintext
-  if [[ -L $secret_file ]]; then
+set -euo pipefail
+IFS=$'\n\t'
+
+# --- Configuration ---
+LOG_ENABLED=true              # set to false to disable output
+
+# --- Helper Functions ---
+log() {
+  if [ "$LOG_ENABLED" = true ]; then
+    echo "[redact-hook] $*"
+  fi
+}
+
+error_exit() {
+  echo "[redact-hook] ERROR: $*" >&2
+  exit 1
+}
+
+# --- Find files with Git attribute 'filter=crypt' ---
+mapfile -t secret_files < <(
+  git -c core.quotePath=false ls-files \
+    | git -c core.quotePath=false check-attr --stdin filter \
+    | awk -F':' '/crypt$/{ gsub(/^[ \t]+|[ \t]+$/, "", $1); print $1 }'
+)
+
+if [ ${#secret_files[@]} -eq 0 ]; then
+  log "No files with 'filter=crypt' found. Skipping."
+  exit 0
+fi
+
+# --- Process each secret file ---
+for secret_file in "${secret_files[@]}"; do
+  # skip symlinks
+  if [[ -L "$secret_file" ]]; then
+    log "Skipping symlink: $secret_file"
     continue
   fi
 
-  # extract filename
-  filename="${secret_file##*/}"
-  # get file extension
+  dir="$(dirname "$secret_file")"
+  filename="$(basename "$secret_file")"
   file_extension="${filename##*.}"
-  # get filename without extension
-  file="${filename%.*}"
-  # extract directory
-  dir="$(dirname ${secret_file})"
+  file_basename="${filename%.*}"
 
-  # if test -f "${dir}/${file}.sed"; then
-  if test -f "${dir}/${filename}.sed"; then
-    if [ $file_extension == $file ]; then
-      sed -f "${dir}/${filename}.sed" $secret_file > "${dir}/${file}_dec"
-    else
-      sed -f "${dir}/${filename}.sed" $secret_file > "${dir}/${file}.${file_extension}.dec"
-    fi
+  sed_file="${dir}/${filename}.sed"
+
+  if [[ ! -f "$sed_file" ]]; then
+    log "No sed rules found for: $secret_file (expected $sed_file)"
+    continue
   fi
 
+  # Determine output name and path
+  if [[ "$file_extension" == "$filename" ]]; then
+    output_file="${dir}/${file_basename}_dec"
+  else
+    output_file="${dir}/${file_basename}.${file_extension}.dec"
+  fi
+
+  log "Redacting: $secret_file → $output_file"
+  sed -f "$sed_file" "$secret_file" > "$output_file" \
+    || error_exit "Failed to apply sed rules to $secret_file"
 done
-rm -f "${tmp}"
-unset IFS
+
+log "Redaction complete."
