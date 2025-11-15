@@ -29,6 +29,11 @@ l2announcements:
 #   l7:
 #     backend: envoy
 
+gatewayAPI:
+  enabled: true
+  gatewayClass:
+    create: "true"
+
 operator:
   replicas: 2
 
