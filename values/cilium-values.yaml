@@ -1,5 +1,18 @@
 # for reference check: https://docs.cilium.io/en/stable/helm-reference/
 
+dashboards:
+  enabled: true
+  label: "grafana_dashboard"
+  labelValue: "1"
+  namespace: "victoriametrics"
+
+envoy:
+  enabled: true
+  prometheus:
+    enabled: true
+    serviceMonitor:
+      enabled: true
+
 envoyConfig:
   enabled: true
 
@@ -8,13 +21,55 @@ envoyConfig:
 #   enabled: true
 #   verbose: flow
 
-ingressController:
-  default: true
+hubble:
   enabled: true
-  loadbalancerMode: shared
-  service:
-    annotations:
-      "lbipam.cilium.io/ips": "172.16.4.40"
+  metrics:
+    dashboards:
+      enabled: true
+      label: "grafana_dashboard"
+      labelValue: "1"
+      namespace: "victoriametrics"
+    enabled:
+      - dns
+      - drop
+      - tcp
+      - flow
+      - port-distribution
+      - icmp
+      - httpV2:exemplars=true;labelsContext=source_ip
+      - source_namespace
+      - source_workload
+      - destination_ip
+      - destination_namespace
+      - destination_workload
+      - traffic_direction
+    serviceMonitor:
+      enabled: true
+  relay:
+    enabled: true
+    prometheus:
+      enabled: true
+      serviceMonitor:
+        enabled: true
+  # tls:
+  #   auto:
+  #     enabled: true
+  #     method: "cert-manager"
+  #     certValidityDuration: 90 # 90 days
+  #     certManagerIssuerRef:
+  #       group: "cert-manager.io"
+  #       name: "cloudflare-letsencrypt-production"
+  #       kind: "ClusterIssuer"
+  ui:
+    enabled: true
+
+# ingressController:
+#   default: false
+#   enabled: false
+#   loadbalancerMode: shared
+#   service:
+#     annotations:
+#       "lbipam.cilium.io/ips": "172.16.4.40"
 
 k8sClientRateLimit:
   burst: 100
@@ -29,8 +84,27 @@ l2announcements:
 #   l7:
 #     backend: envoy
 
+gatewayAPI:
+  enabled: true
+  gatewayClass:
+    create: "true"
+
 operator:
+  dashboards:
+    enabled: true
+    label: "grafana_dashboard"
+    labelValue: "1"
+    namespace: "victoriametrics"
+  prometheus:
+    enabled: true
+    serviceMonitor:
+      enabled: true
   replicas: 2
+
+prometheus:
+  enabled: true
+  serviceMonitor:
+    enabled: true
 
 # test
 # apiRateLimit: endpoint-create=rate-limit:2/s,rate-burst:4
