@@ -10,7 +10,7 @@ configuration:
   timeZone: "Europe/Berlin"
   prometheusUrl: "http://vmsingle-victoria-metrics-k8s-stack.victoriametrics.svc.cluster.local:8428"
   alertFiringOnly: true
-  alertFilterRegexp: ^(RebootRequired|Watchdog)$
+  alertFilterRegexp: ^(RebootRequired|Watchdog|InfoInhibitor|RecordingRulesNoData)$
   # notifyUrl: "<REDACTED>"
   # period: "2m" # only for testing purpose
 
