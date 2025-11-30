@@ -30,7 +30,7 @@ hubble:
       labelValue: "1"
       namespace: "victoriametrics"
     enabled:
-      - dns
+      - dns:query;ignoreAAAA
       - drop
       - tcp
       - flow
