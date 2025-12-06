@@ -7,6 +7,9 @@ dashboards:
   namespace: "victoriametrics"
 
 envoy:
+  debug:
+    admin:
+      enabled: false # enable for debugging
   enabled: true
   prometheus:
     enabled: true
