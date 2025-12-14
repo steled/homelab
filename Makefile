@@ -20,7 +20,6 @@ KUBEONE_BINARY="${ROOT_DIR}/kubeone"
 GREEN=41;42m
 RED=41;101m
 
-
 # KKP_SECRETS_KUBECONFIG="${ROOT_DIR}/../03-kubermatic/secrets/kubeone-root-kubeconfig"
 
 # CREDENTIALS_FILE=${ROOT_DIR}/../secrets/credentials.sh
@@ -40,6 +39,7 @@ k1-apply-homelab:
 	$(eval COLOR=${RED})
 	$(eval ENVIRONMENT="homelab")
 	make k1-apply
+	kubectl delete -f addons/fluo-cleanup/fluo-cleanup.yaml
 
 k1-reset-test:
 	$(eval COLOR=${GREEN})
