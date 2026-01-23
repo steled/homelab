@@ -39,7 +39,8 @@ k1-apply-homelab:
 	$(eval COLOR=${RED})
 	$(eval ENVIRONMENT="homelab")
 	make k1-apply
-	kubectl delete -f addons/fluo-cleanup/fluo-cleanup.yaml
+	kubectl delete -f addons/fluo-cleanup/fluo-cleanup.yaml || true
+	kubectl apply -f addons/fluo-cleanup/fluo-cleanup.yaml
 
 k1-reset-test:
 	$(eval COLOR=${GREEN})
