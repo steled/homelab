@@ -109,8 +109,7 @@ download-kubeone-release:
 	else \
 		echo "\033[41;44mINFO:\033[0m Downloading new kubeone version ${KUBEONE_VERSION} (current: ${KUBEONE_OLD})"; \
 		test -f $(KUBEONE_BINARY) && cp $(KUBEONE_BINARY) $(KUBEONE_BINARY)_v${KUBEONE_OLD} || echo "\033[41;101mERROR:\033[0m kubeone binary not found, downloading now"; \
-		wget https://github.com/kubermatic/kubeone/releases/download/v${KUBEONE_VERSION}/kubeone_${KUBEONE_VERSION}_${BIN_OS}_${BIN_ARCH}.zip -O kubeone_${KUBEONE_VERSION}_${BIN_OS}_${BIN_ARCH}.zip; \
-		unzip -o kubeone_${KUBEONE_VERSION}_${BIN_OS}_${BIN_ARCH}.zip 'kubeone' -d ../../../shared-resources/; \
-		unzip -oj kubeone_${KUBEONE_VERSION}_${BIN_OS}_${BIN_ARCH}.zip 'addons/default-storage-class/*' -d addons/default-storage-class_v${KUBEONE_VERSION}; \
+		wget -q --show-progress https://github.com/kubermatic/kubeone/releases/download/v${KUBEONE_VERSION}/kubeone_${KUBEONE_VERSION}_${BIN_OS}_${BIN_ARCH}.zip -O kubeone_${KUBEONE_VERSION}_${BIN_OS}_${BIN_ARCH}.zip; \
+		unzip -o kubeone_${KUBEONE_VERSION}_${BIN_OS}_${BIN_ARCH}.zip 'kubeone' -d ${ROOT_DIR}/; \
 		rm kubeone_${KUBEONE_VERSION}_${BIN_OS}_${BIN_ARCH}.zip; \
 	fi
