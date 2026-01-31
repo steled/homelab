@@ -65,33 +65,33 @@ helmReleases:
     repoURL: https://istio-release.storage.googleapis.com/charts
     namespace: istio-system
     # renovate: datasource=github-releases depName=istio packageName=istio/istio
-    version: 1.28.2 # check version here: https://istio.io/latest/news/releases/
+    version: 1.28.3 # check version here: https://istio.io/latest/news/releases/
     values:
       - valuesFile: ./values/01_defaults/istio-base-values.yaml
   - chart: istio/istiod
     repoURL: https://istio-release.storage.googleapis.com/charts
     namespace: istio-system
     # renovate: datasource=github-releases depName=istio packageName=istio/istio
-    version: 1.28.2 # check version here: https://istio.io/latest/news/releases/
+    version: 1.28.3 # check version here: https://istio.io/latest/news/releases/
     values:
       - valuesFile: ./values/01_defaults/istiod-values.yaml
   - chart: istio/cni
     repoURL: https://istio-release.storage.googleapis.com/charts
     namespace: istio-system
     # renovate: datasource=github-releases depName=istio packageName=istio/istio
-    version: 1.28.2 # check version here: https://istio.io/latest/news/releases/
+    version: 1.28.3 # check version here: https://istio.io/latest/news/releases/
     values:
       - valuesFile: ./values/01_defaults/istio-cni-values.yaml
   - chart: istio/ztunnel
     repoURL: https://istio-release.storage.googleapis.com/charts
     namespace: istio-system
     # renovate: datasource=github-releases depName=istio packageName=istio/istio
-    version: 1.28.2 # check version here: https://istio.io/latest/news/releases/
+    version: 1.28.3 # check version here: https://istio.io/latest/news/releases/
   - chart: istio/gateway
     repoURL: https://istio-release.storage.googleapis.com/charts
     namespace: istio-ingress
     # renovate: datasource=github-releases depName=istio packageName=istio/istio
-    version: 1.28.2 # check version here: https://istio.io/latest/news/releases/
+    version: 1.28.3 # check version here: https://istio.io/latest/news/releases/
     values:
       - valuesFile: ./values/01_defaults/istio-gateway-values.yaml
   - chart: kured
