@@ -1,5 +1,8 @@
 # for reference check: https://docs.cilium.io/en/stable/helm-reference/
 
+cni:
+  exclusive: false
+
 dashboards:
   enabled: true
   label: "grafana_dashboard"
