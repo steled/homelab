@@ -4,7 +4,7 @@ name: homelab
 
 versions:
   # renovate: datasource=github-releases depName=kubernetes packageName=kubernetes/kubernetes
-  kubernetes: '1.34.4' # check version here: https://kubernetes.io/releases/
+  kubernetes: '1.34.5' # check version here: https://kubernetes.io/releases/
 
 cloudProvider:
   none: {}
@@ -58,7 +58,7 @@ helmReleases:
     repoURL: https://helm.cilium.io/
     namespace: kube-system
     # renovate: datasource=github-releases depName=cilium packageName=cilium/cilium
-    version: 1.19.0 # get version from here: https://helm.cilium.io/
+    version: 1.19.1 # get version from here: https://helm.cilium.io/
     values:
       - valuesFile: ./values/01_defaults/cilium-values.yaml
   - chart: base
