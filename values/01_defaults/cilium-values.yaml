@@ -53,6 +53,8 @@ hubble:
       enabled: true
   relay:
     enabled: true
+    podLabels:
+      istio.io/dataplane-mode: none
     prometheus:
       enabled: true
       serviceMonitor:
@@ -81,7 +83,7 @@ k8sClientRateLimit:
   burst: 100
   qps: 50
 
-kubeProxyReplacement: true
+kubeProxyReplacement: false
 
 l2announcements:
   enabled: true
@@ -91,9 +93,9 @@ l2announcements:
 #     backend: envoy
 
 gatewayAPI:
-  enabled: true
+  enabled: false
   gatewayClass:
-    create: "true"
+    create: "false"
 
 operator:
   dashboards:
@@ -111,6 +113,9 @@ prometheus:
   enabled: true
   serviceMonitor:
     enabled: true
+
+socketLB:
+  hostNamespaceOnly: true
 
 # test
 # apiRateLimit: endpoint-create=rate-limit:2/s,rate-burst:4
