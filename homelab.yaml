@@ -65,28 +65,28 @@ helmReleases:
     repoURL: https://istio-release.storage.googleapis.com/charts
     namespace: istio-system
     # renovate: datasource=github-releases depName=istio packageName=istio/istio
-    version: 1.28.3 # check version here: https://istio.io/latest/news/releases/
+    version: 1.29.0 # check version here: https://istio.io/latest/news/releases/
     values:
       - valuesFile: ./values/01_defaults/istio-base-values.yaml
   - chart: istiod
     repoURL: https://istio-release.storage.googleapis.com/charts
     namespace: istio-system
     # renovate: datasource=github-releases depName=istio packageName=istio/istio
-    version: 1.28.3 # check version here: https://istio.io/latest/news/releases/
+    version: 1.29.0 # check version here: https://istio.io/latest/news/releases/
     values:
       - valuesFile: ./values/01_defaults/istiod-values.yaml
   - chart: cni
     repoURL: https://istio-release.storage.googleapis.com/charts
     namespace: istio-system
     # renovate: datasource=github-releases depName=istio packageName=istio/istio
-    version: 1.28.3 # check version here: https://istio.io/latest/news/releases/
+    version: 1.29.0 # check version here: https://istio.io/latest/news/releases/
     values:
       - valuesFile: ./values/01_defaults/istio-cni-values.yaml
   - chart: ztunnel
     repoURL: https://istio-release.storage.googleapis.com/charts
     namespace: istio-system
     # renovate: datasource=github-releases depName=istio packageName=istio/istio
-    version: 1.28.3 # check version here: https://istio.io/latest/news/releases/
+    version: 1.29.0 # check version here: https://istio.io/latest/news/releases/
   - chart: kured
     repoURL: https://kubereboot.github.io/charts
     namespace: kube-system
