@@ -21,14 +21,19 @@ controlPlane:
       sshUsername: steled
       sshPrivateKeyFile: '/home/steled/.ssh/steled.id_rsa'
       taints: []
-
-staticWorkers:
-  hosts:
     - publicAddress: '172.16.4.28'
       privateAddress: '172.16.4.28'
       sshUsername: steled
       sshPrivateKeyFile: '/home/steled/.ssh/steled.id_rsa'
       taints: []
+    - publicAddress: '172.16.4.29'
+      privateAddress: '172.16.4.29'
+      sshUsername: steled
+      sshPrivateKeyFile: '/home/steled/.ssh/steled.id_rsa'
+      taints: []
+
+# staticWorkers:
+#   hosts:
 
 # Provide the external address of your load balancer or the public addresses of
 # the first control plane nodes.
