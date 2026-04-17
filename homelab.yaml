@@ -63,35 +63,35 @@ helmReleases:
     repoURL: https://helm.cilium.io/
     namespace: kube-system
     # renovate: datasource=github-releases depName=cilium packageName=cilium/cilium
-    version: 1.19.2 # get version from here: https://helm.cilium.io/
+    version: 1.19.3 # get version from here: https://helm.cilium.io/
     values:
       - valuesFile: ./values/01_defaults/cilium-values.yaml
   - chart: base
     repoURL: https://istio-release.storage.googleapis.com/charts
     namespace: istio-system
     # renovate: datasource=github-releases depName=istio packageName=istio/istio
-    version: 1.29.1 # check version here: https://istio.io/latest/news/releases/
+    version: 1.29.2 # check version here: https://istio.io/latest/news/releases/
     values:
       - valuesFile: ./values/01_defaults/istio-base-values.yaml
   - chart: istiod
     repoURL: https://istio-release.storage.googleapis.com/charts
     namespace: istio-system
     # renovate: datasource=github-releases depName=istio packageName=istio/istio
-    version: 1.29.1 # check version here: https://istio.io/latest/news/releases/
+    version: 1.29.2 # check version here: https://istio.io/latest/news/releases/
     values:
       - valuesFile: ./values/01_defaults/istiod-values.yaml
   - chart: cni
     repoURL: https://istio-release.storage.googleapis.com/charts
     namespace: istio-system
     # renovate: datasource=github-releases depName=istio packageName=istio/istio
-    version: 1.29.1 # check version here: https://istio.io/latest/news/releases/
+    version: 1.29.2 # check version here: https://istio.io/latest/news/releases/
     values:
       - valuesFile: ./values/01_defaults/istio-cni-values.yaml
   - chart: ztunnel
     repoURL: https://istio-release.storage.googleapis.com/charts
     namespace: istio-system
     # renovate: datasource=github-releases depName=istio packageName=istio/istio
-    version: 1.29.1 # check version here: https://istio.io/latest/news/releases/
+    version: 1.29.2 # check version here: https://istio.io/latest/news/releases/
   - chart: kured
     repoURL: https://kubereboot.github.io/charts
     namespace: kube-system
