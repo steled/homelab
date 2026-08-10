@@ -92,6 +92,8 @@ helmReleases:
     namespace: istio-system
     # renovate: datasource=github-releases depName=istio packageName=istio/istio
     version: 1.30.3 # check version here: https://istio.io/latest/news/releases/
+    values:
+      - valuesFile: ./values/01_defaults/ztunnel-values.yaml
   - chart: kured
     repoURL: https://kubereboot.github.io/charts
     namespace: kube-system
