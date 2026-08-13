@@ -43,7 +43,7 @@ k1-fix-journald-size:
 		echo "Setting journald SystemMaxUse=${K1_JOURNALD_MAX_SIZE} on $$node"; \
 		ssh -o StrictHostKeyChecking=accept-new -i $$key $$user@$$node \
 			"sudo mkdir -p /etc/systemd/journald.conf.d && \
-			 printf '[Journal]\nSystemMaxUse=${K1_JOURNALD_MAX_SIZE}\n' | sudo tee /etc/systemd/journald.conf.d/99-homelab-max-size.conf > /dev/null && \
+			 printf '[Journal]\nSystemMaxUse=${K1_JOURNALD_MAX_SIZE}\n' | sudo tee /etc/systemd/journald.conf.d/max_disk_use.conf > /dev/null && \
 			 sudo systemctl restart systemd-journald"; \
 	done
 
