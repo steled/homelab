@@ -48,6 +48,18 @@
         "kubereboot/charts"
       ],
       "extractVersion": "^kured-(?<version>.*)$"
+    },
+    {
+      "matchDatasources": [
+        "helm"
+      ],
+      "matchPackageNames": [
+        "base",
+        "istiod",
+        "cni",
+        "ztunnel"
+      ],
+      "groupName": "istio"
     }
   ]
 }

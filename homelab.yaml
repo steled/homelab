@@ -67,30 +67,30 @@ helmReleases:
     values:
       - valuesFile: ./values/01_defaults/cilium-values.yaml
   - chart: base
-    repoURL: https://istio-release.storage.googleapis.com/charts
+    repoURL: https://blob.istio.io/istio-release/charts
     namespace: istio-system
-    # renovate: datasource=github-releases depName=istio packageName=istio/istio
+    # renovate: datasource=helm depName=base registryUrl=https://blob.istio.io/istio-release/charts
     version: 1.31.0 # check version here: https://istio.io/latest/news/releases/
     values:
       - valuesFile: ./values/01_defaults/istio-base-values.yaml
   - chart: istiod
-    repoURL: https://istio-release.storage.googleapis.com/charts
+    repoURL: https://blob.istio.io/istio-release/charts
     namespace: istio-system
-    # renovate: datasource=github-releases depName=istio packageName=istio/istio
+    # renovate: datasource=helm depName=istiod registryUrl=https://blob.istio.io/istio-release/charts
     version: 1.31.0 # check version here: https://istio.io/latest/news/releases/
     values:
       - valuesFile: ./values/01_defaults/istiod-values.yaml
   - chart: cni
-    repoURL: https://istio-release.storage.googleapis.com/charts
+    repoURL: https://blob.istio.io/istio-release/charts
     namespace: istio-system
-    # renovate: datasource=github-releases depName=istio packageName=istio/istio
+    # renovate: datasource=helm depName=cni registryUrl=https://blob.istio.io/istio-release/charts
     version: 1.31.0 # check version here: https://istio.io/latest/news/releases/
     values:
       - valuesFile: ./values/01_defaults/istio-cni-values.yaml
   - chart: ztunnel
-    repoURL: https://istio-release.storage.googleapis.com/charts
+    repoURL: https://blob.istio.io/istio-release/charts
     namespace: istio-system
-    # renovate: datasource=github-releases depName=istio packageName=istio/istio
+    # renovate: datasource=helm depName=ztunnel registryUrl=https://blob.istio.io/istio-release/charts
     version: 1.31.0 # check version here: https://istio.io/latest/news/releases/
     values:
       - valuesFile: ./values/01_defaults/ztunnel-values.yaml
