@@ -1,1 +1,9 @@
 profile: ambient
+
+# Write istio-cni's own 02-istio-cni.conflist instead of chaining into Cilium's
+# 05-cilium.conflist. On boot, Cilium rewrites its own conflist (dropping the
+# chained istio-cni entry) before istio-cni re-adds it; pods whose sandbox is
+# recreated in that window (DaemonSet pods, which kured never drains) end up
+# silently un-enrolled from ambient. Requires Cilium cni.exclusive=false.
+# https://github.com/istio/istio/issues/60882
+istioOwnedCNIConfig: true
