@@ -1,7 +1,7 @@
 ########## K1 Helper for easy management
 # check version here: https://github.com/kubermatic/kubeone/releases
 # renovate: datasource=github-releases depName=kubeone packageName=kubermatic/kubeone
-KUBEONE_VERSION=1.14.4
+KUBEONE_VERSION=1.15.0
 ROOT_DIR=$(realpath .)
 
 K1_CONFIG="."
@@ -25,27 +25,7 @@ export
 k1-apply:
 	@cd ${K1_CONFIG} && \
 		$(KUBEONE_BINARY) ${K1_CRED_FLAG} apply $(arg) -c credentials.yaml -m homelab.yaml --verbose ${K1_EXTRA_ARG}
-	kubectl delete -f addons/fluo-cleanup/fluo-cleanup.yaml || true
-	kubectl apply -f addons/fluo-cleanup/fluo-cleanup.yaml
 	make k1-kubeconfig
-	make k1-fix-journald-size
-
-# TODO: remove once https://github.com/kubermatic/kubeone/issues/4058 is resolved.
-# kubeone/kubeadm rewrite /etc/systemd/journald.conf on every apply, silently
-# dropping any manual SystemMaxUse tweak made directly in that file. A drop-in
-# under journald.conf.d/ survives the rewrite, so we re-apply it after every
-# k1-apply until kubeone supports configuring this natively.
-K1_JOURNALD_MAX_SIZE=500M
-k1-fix-journald-size:
-	@for node in $(shell grep -oP "publicAddress: '\K[0-9.]+" homelab.yaml); do \
-		user=$$(grep -m1 'sshUsername:' homelab.yaml | awk '{print $$2}'); \
-		key=$$(grep -m1 'sshPrivateKeyFile:' homelab.yaml | awk '{print $$2}' | tr -d "'"); \
-		echo "Setting journald SystemMaxUse=${K1_JOURNALD_MAX_SIZE} on $$node"; \
-		ssh -o StrictHostKeyChecking=accept-new -i $$key $$user@$$node \
-			"sudo mkdir -p /etc/systemd/journald.conf.d && \
-			 printf '[Journal]\nSystemMaxUse=${K1_JOURNALD_MAX_SIZE}\n' | sudo tee /etc/systemd/journald.conf.d/max_disk_use.conf > /dev/null && \
-			 sudo systemctl restart systemd-journald"; \
-	done
 
 k1-reset:
 	@cd ${K1_CONFIG} && \
