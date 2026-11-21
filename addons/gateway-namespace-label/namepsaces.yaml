@@ -3,6 +3,7 @@ kind: Namespace
 metadata:
   name: istio-system
   labels:
+    internal-gateway-access: "true"
     shared-gateway-access: "true"
 ---
 apiVersion: v1
@@ -10,4 +11,5 @@ kind: Namespace
 metadata:
   name: kube-system
   labels:
+    internal-gateway-access: "true"
     shared-gateway-access: "true"
