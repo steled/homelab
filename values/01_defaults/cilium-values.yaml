@@ -59,6 +59,13 @@ hubble:
       enabled: true
       serviceMonitor:
         enabled: true
+  tls:
+    auto:
+      # the chart default "helm" reuses the existing secrets on every upgrade and never
+      # renews them, so the hubble server/relay certs expired after 365 days (2026-11-22)
+      # and hubble-relay failed with x509 errors; the certgen CronJob reissues them
+      # every 4 months (chart default schedule) with 365 days validity
+      method: cronJob
   # tls:
   #   auto:
   #     enabled: true
